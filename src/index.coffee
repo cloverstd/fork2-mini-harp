@@ -3,6 +3,7 @@ serveStatic = require 'serve-static'
 
 
 createMiniHarp = (staticPath)->
+  staticPath = if staticPath then staticPath else process.cwd()
   app = connect()
     .use (req, res, next) ->
       requestPath = req.url.slice 1
