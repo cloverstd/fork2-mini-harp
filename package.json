@@ -12,7 +12,8 @@
   "author": "cloverstd",
   "license": "MIT",
   "dependencies": {
-    "connect": "^3.0.1"
+    "connect": "^3.0.1",
+    "minimist": "^0.2.0"
   },
   "devDependencies": {
     "coffee-script": "^1.7.1"
