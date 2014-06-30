@@ -1,7 +1,8 @@
 connect = require 'connect'
+serveStatic = require 'serve-static'
 
 
-createMiniHarp = ->
+createMiniHarp = (staticPath)->
   app = connect()
     .use (req, res, next) ->
       requestPath = req.url.slice 1
@@ -10,6 +11,7 @@ createMiniHarp = ->
         res.end body
       else
         next()
+    .use (serveStatic staticPath)
 
 
 module.exports = createMiniHarp
