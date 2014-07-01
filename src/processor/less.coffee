@@ -17,10 +17,15 @@ makeLess = (root) ->
               next()
             else
               less.render data, (err, css) ->
-                if err then next() else res.end css
+                if err
+                  next()
+                else
+                  res.setHeader('Content-Length', css.length)
+                  res.end css
 
         else
           # HTML document
+          res.setHeader('Content-Length', data.length)
           res.end data
 
     else

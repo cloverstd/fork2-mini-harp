@@ -16,10 +16,13 @@ makeJade = (root) ->
             if err
               next()
             else
-              res.end do jade.compile data
+              html = do jade.compile data
+              res.setHeader('Content-Length', html.length)
+              res.end html
 
         else
           # HTML document
+          res.setHeader('Content-Length', data.length)
           res.end data
 
     else
