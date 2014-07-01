@@ -21,11 +21,13 @@ makeLess = (root) ->
                   next()
                 else
                   res.setHeader('Content-Length', css.length)
+                  res.setHeader('Content-Type', 'text/css; charset=UTF-8')
                   res.end css
 
         else
           # HTML document
           res.setHeader('Content-Length', data.length)
+          res.setHeader('Content-Type', 'text/css; charset=UTF-8')
           res.end data
 
     else

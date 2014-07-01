@@ -18,10 +18,12 @@ makeJade = (root) ->
             else
               html = do jade.compile data
               res.setHeader('Content-Length', html.length)
+              res.setHeader('Content-Type', 'text/html; charset=UTF-8')
               res.end html
 
         else
           # HTML document
+          res.setHeader('Content-Type', 'text/html; charset=UTF-8')
           res.setHeader('Content-Length', data.length)
           res.end data
 
