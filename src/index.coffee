@@ -2,6 +2,7 @@ connect = require 'connect'
 serveStatic = require 'serve-static'
 makeJade = require './processor/jade'
 makeLess = require './processor/less'
+makeIndex = require './processor/index'
 
 
 createMiniHarp = (staticPath)->
@@ -14,9 +15,10 @@ createMiniHarp = (staticPath)->
         res.end body
       else
         next()
-    .use (serveStatic staticPath)
-    .use (makeJade staticPath)
-    .use (makeLess staticPath)
+    .use(makeIndex())
+    .use(serveStatic staticPath)
+    .use(makeJade staticPath)
+    .use(makeLess staticPath)
 
 
 module.exports = createMiniHarp
